@@ -17,7 +17,7 @@ const Nav = () => {
 
         <div className='flex'>
           <div className={"mx-4 " + (router.pathname == "/" ? "border-b-2 border-red-500" : "")}>
-            <Link href="/">Home</Link>
+            <Link href="/">One</Link>
           </div>
 
           <div className={"hidden md:flex mx-4 " + (router.pathname == "/two" ? "border-b-2 border-red-500" : "")}>
@@ -31,37 +31,20 @@ const Nav = () => {
         </div>
 
         {/* Mobile menu button  */}
-        <div className="md:hidden flex items-center">
-          <MenuIcon onClick={() => { setShowMobileMenu(!showMobileMenu) }} className="h-5 w-5 text-white" />
+        <div className="md:hidden absolute right-0 flex flex-col justify-items-end bg-black o ">
+          <div  className=' flex justify-end pr-2 ' >
+            <MenuIcon onClick={() => { setShowMobileMenu(!showMobileMenu) }} className="h-5 w-5  text-white  " />
+          </div>
+          <div className={"   md:hidden " + (showMobileMenu ? "" : "hidden")}>
+            <ul className=" flex bg-black px-6 py-2 justify-text-end rounded flex-col">
+              <li onClick={() => { setShowMobileMenu(!showMobileMenu) }} className={"flex justify-end "    + (router.pathname == "/two" ? "text-red-500" : "")     }><Link href="/two">Two</Link></li>
+              <li onClick={() => { setShowMobileMenu(!showMobileMenu) }} className={"flex justify-end " + (router.pathname == "/three" ? "text-red-500" : "")}><Link href="/three">Three</Link></li>
+
+            </ul>
+          </div>
         </div>
-
-
-        {/* Mobile menu items  */}
-
-        <div className={"md:hidden " + (showMobileMenu ? "" : "hidden")}>
-          <ul className="">
-            <li onClick={() => { setShowMobileMenu(!showMobileMenu) }} className="active"><Link href="/two" activeClassName="text-white bg-green-500 font-semibold" className="block text-sm px-2  pt-8 pb-4 ">Two</Link></li>
-            <li onClick={() => { setShowMobileMenu(!showMobileMenu) }} className="active"><Link href="/three" activeClassName="text-white bg-green-500 font-semibold" className="block text-sm px-2 py-4 ">Three</Link></li>
-
-          </ul>
-        </div>
-
-
 
       </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
     </>
   );
 };
